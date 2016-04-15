@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.hzih.bsps.domain.RoleManageAndTime" table="rolemanageandtime" >
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+        <property name="rolemanageid" type="int">
+            <column name="rolemanageid" />
+        </property>
+        <property name="timetype" type="int">
+            <column name="timetype"  />
+        </property>
+        <property name="starttime" type="java.util.Date">
+            <column name="starttime"  />
+        </property>
+        <property name="endtime" type="java.util.Date">
+            <column name="endtime"  />
+        </property>
+
+    </class>
+</hibernate-mapping>

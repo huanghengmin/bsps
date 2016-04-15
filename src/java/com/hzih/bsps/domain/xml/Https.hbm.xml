@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class table="https" name="com.hzih.bsps.domain.Https">
+        <id access="field" name="id" type="int" column="id" length="10">
+            <generator class="increment"/>
+        </id>
+        <property name="manager_ip" length="16" column="manager_ip" access="field" type="string"/>
+        <property name="manager_port" length="5" column="manager_port" access="field" type="string"/>
+        <property name="proxy_ip" length="16" column="proxy_ip" access="field" type="string"/>
+        <property name="proxy_port" length="5" column="proxy_port" access="field" type="string"/>
+        <property name="protocol" length="5" column="protocol" access="field" type="string"/>
+        <property name="site" length="10" column="site_id" access="field" type="string"/>
+        <property name="site_id_server" length="10" column="site_id_server" access="field" type="string"/>
+
+        <!--<many-to-one name="site" column="site_id"  class="com.hzih.bsms.domain.Site"  cascade="save-update" not-null="true"/>-->
+    </class>
+</hibernate-mapping>

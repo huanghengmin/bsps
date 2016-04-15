@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class table="processentity" name="com.hzih.bsps.cs.ProcessEntity">
+        <id access="field" name="id" type="int" column="id" length="11">
+            <generator class="increment"/>
+        </id>
+        <property name="task" length="11" column="task" access="field" type="string"/>
+        <property name="sourceIp" length="15" column="sourceip" access="field" type="string"/>
+        <property name="sourcePort" length="11" column="sourceport" access="field" type="string"/>
+        <property name="distIp" length="15" column="distip" access="field" type="string"/>
+        <property name="distPort" length="11" column="distport" access="field" type="string"/>
+        <property name="isRun" column="isrun" access="field" type="int"/>
+        <property name="flagRun" column="flagrun" access="field" type="int"/>
+        <property name="type" length="4" column="protocol" access="field" type="string"/>
+        <property name="describe" length="50" column="info" access="field" type="string"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.hzih.bsps.domain.ResourceWeb" table="resourceweb" >
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+        <property name="resourceid" type="int">
+            <column name="resourceid" />
+        </property>
+        <property name="agreement" type="java.lang.String">
+            <column name="agreement" length="50"/>
+        </property>
+        <property name="ipaddress" type="java.lang.String">
+            <column name="ipaddress" length="50"/>
+        </property>
+        <property name="port" type="java.lang.String">
+            <column name="port" length="50"/>
+        </property>
+        <property name="url" type="java.lang.String">
+            <column name="url" length="50"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.hzih.bsps.domain.UserManage" table="usermanage" >
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+        <property name="cacn" type="java.lang.String">
+             <column name="cacn" length="50" />
+        </property>
+        <property name="province" type="java.lang.String">
+            <column name="province" length="50" />
+        </property>
+        <property name="city" type="java.lang.String">
+            <column name="city" length="50" />
+        </property>
+        <property name="department" type="java.lang.String">
+            <column name="department" length="50" />
+        </property>
+        <property name="policestation" type="java.lang.String">
+            <column name="policestation" length="50" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="email" length="50" />
+        </property>
+        <property name="tel" type="java.lang.String">
+            <column name="tel" length="50" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="address" length="50" />
+        </property>
+        <property name="idcard" type="java.lang.String">
+            <column name="idcard" length="50" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="description" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

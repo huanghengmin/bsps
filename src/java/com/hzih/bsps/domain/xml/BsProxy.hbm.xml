@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.hzih.bsps.domain.BsProxy" table="proxy_config" >
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+        <property name="proxy_ip" type="java.lang.String">
+            <column name="proxy_ip" length="12"/>
+        </property>
+        <property name="proxy_port" type="java.lang.String">
+            <column name="proxy_port" length="5"/>
+        </property>
+        <property name="protocol" type="java.lang.String">
+            <column name="protocol" length="5"/>
+        </property>
+        <property name="app_flag" type="java.lang.String">
+            <column name="app_flag" length="20"/>
+        </property>
+    </class>
+</hibernate-mapping>
