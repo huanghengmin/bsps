@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="bsps:appserver exploded">
+    <output-path>E:/fartec/ichange/bsps/tomcat/webapps/ROOT</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="bsps" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="shared" />
+          <element id="library" level="project" name="bsps" />
+          <element id="library" level="project" name="snmp" />
+          <element id="library" level="project" name="ssh2" />
+          <element id="library" level="project" name="syslog4j-0.9.46" />
+          <element id="library" level="project" name="commons-exec" />
+        </element>
+        <element id="file-copy" path="$PROJECT_DIR$/src/resources/spring.xml" />
+      </element>
+      <element id="javaee-facet-resources" facet="bsps/web/appserver" />
+    </root>
+  </artifact>
+</component>
