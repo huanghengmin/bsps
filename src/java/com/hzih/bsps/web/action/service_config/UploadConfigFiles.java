@@ -76,7 +76,8 @@ public class UploadConfigFiles extends ActionSupport {
         Proc proc = new Proc();
 //        proc.exec("sh "+StringContext.systemPath+"/bsshell/reconfigure_nginx.sh");
         proc.exec("service nginx status");
-        if(proc.getOutput().contains("found running")){
+//        if(proc.getOutput().contains("found running")){
+            if(proc.getOutput().contains("running")) {
             proc.exec("service nginx reload");
         } else {
             proc.exec("service nginx start");

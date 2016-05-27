@@ -30,7 +30,8 @@ public class NginxServerStatusAction extends ActionSupport {
             Thread.sleep(1000*2);
             proc.exec("service nginx status");
             String msg_on = proc.getOutput();
-            if(msg_on.contains("is NOT running")) {
+//            if(msg_on.contains("is NOT running")) {
+            if(!msg_on.contains("running")) {
                 msg = "0";
             }else {
                 msg = "1";
@@ -55,7 +56,8 @@ public class NginxServerStatusAction extends ActionSupport {
             Thread.sleep(1000*2);
             proc.exec("service nginx status");
             String msg_on = proc.getOutput();
-            if(msg_on.contains("is NOT running")) {
+//            if(msg_on.contains("is NOT running")) {
+                if(!msg_on.contains("running")) {
                 msg = "0";
             }else {
                 msg = "1";
@@ -78,7 +80,8 @@ public class NginxServerStatusAction extends ActionSupport {
             Proc proc = new Proc();
             proc.exec("service nginx status");
             String msg_on = proc.getOutput();
-            if(msg_on.contains("is NOT running")) {
+//            if(msg_on.contains("is NOT running")) {
+            if(!msg_on.contains("running")) {
                 msg = "0";
             }else {
                 msg = "1";
@@ -104,7 +107,8 @@ public class NginxServerStatusAction extends ActionSupport {
             try{
                 proc.exec("service nginx status");
                 String msg_on = proc.getOutput();
-                if(msg_on.contains("is NOT running")) {
+//                if(msg_on.contains("is NOT running")) {
+                if(!msg_on.contains("running")) {
                     msg = "0";
                 }else {
                     msg = "1";
