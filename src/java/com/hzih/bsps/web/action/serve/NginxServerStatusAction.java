@@ -1,9 +1,11 @@
 package com.hzih.bsps.web.action.serve;
+
 import com.hzih.bsps.web.action.ActionBase;
 import com.inetec.common.util.Proc;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -30,11 +32,12 @@ public class NginxServerStatusAction extends ActionSupport {
             Thread.sleep(1000*2);
             proc.exec("service nginx status");
             String msg_on = proc.getOutput();
+            if (msg_on.contains("is running")) {
 //            if(msg_on.contains("is NOT running")) {
-            if(!msg_on.contains("running")) {
-                msg = "0";
-            }else {
+//            if(!msg_on.contains("running")) {
                 msg = "1";
+            }else {
+                msg = "0";
             }
         } catch (Exception e) {
             msg = "0";
@@ -57,10 +60,11 @@ public class NginxServerStatusAction extends ActionSupport {
             proc.exec("service nginx status");
             String msg_on = proc.getOutput();
 //            if(msg_on.contains("is NOT running")) {
-                if(!msg_on.contains("running")) {
-                msg = "0";
-            }else {
+                if (msg_on.contains("is running")) {
+//            if(!msg_on.contains("running")) {
                 msg = "1";
+            }else {
+                msg = "0";
             }
         } catch (Exception e) {
             msg = "0";
@@ -81,10 +85,11 @@ public class NginxServerStatusAction extends ActionSupport {
             proc.exec("service nginx status");
             String msg_on = proc.getOutput();
 //            if(msg_on.contains("is NOT running")) {
-            if(!msg_on.contains("running")) {
-                msg = "0";
-            }else {
+                if (msg_on.contains("is running")) {
+//            if(!msg_on.contains("running")) {
                 msg = "1";
+            }else {
+                msg = "0";
             }
         } catch (Exception e){
             msg = "0";
@@ -108,10 +113,11 @@ public class NginxServerStatusAction extends ActionSupport {
                 proc.exec("service nginx status");
                 String msg_on = proc.getOutput();
 //                if(msg_on.contains("is NOT running")) {
-                if(!msg_on.contains("running")) {
-                    msg = "0";
-                }else {
+                    if (msg_on.contains("is running")) {
+//                if(!msg_on.contains("running")) {
                     msg = "1";
+                }else {
+                    msg = "0";
                 }
             } catch (Exception e){
                 msg = "0";
