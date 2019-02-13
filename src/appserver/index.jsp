@@ -30,6 +30,7 @@
 <DIV>
     <script type="text/javascript">
         var centerPanel;
+	var titleText = "中盾B/S应用代理系统";
         Ext.onReady(function () {
             Ext.QuickTips.init();
             Ext.form.Field.prototype.msgTarget = 'side';
@@ -388,7 +389,38 @@
                     }
                 }, {
                     xtype: 'tbseparator'
-                }, {
+                },
+                    {
+                        pressed: false,
+                        text: '备份系统',
+                        iconCls: 'bak',
+                        handler: function () {
+                            bak();
+                        }
+                    }, {
+                        xtype: 'tbseparator'
+                    },
+                    {
+                        pressed: false,
+                        text: '上传系统恢复包',
+                        iconCls: 'uploadBak',
+                        handler: function () {
+                            uploadBak();
+                        }
+                    }, {
+                        xtype: 'tbseparator'
+                    },
+                    {
+                        pressed: false,
+                        text: '还原系统',
+                        iconCls: 'restoreBak',
+                        handler: function () {
+                            restoreBak();
+                        }
+                    }, {
+                        xtype: 'tbseparator'
+                    },
+                    {
                     pressed: false,
                     text: '帮助',
                     iconCls: 'help',
@@ -400,7 +432,30 @@
                      },{
                      xtype:"combo",
                      width: 120*/
-                }
+		},
+                    {
+                        xtype: 'tbseparator'
+                    }
+                    ,
+                    {
+                        pressed: false,
+                        text: '关于',
+                        iconCls: 'about',
+                        handler: function () {
+                            new Ext.Window({
+                                title: "关于",
+                                width: 350,
+                                layout: 'fit',
+                                height: 150,
+                                modal: true,
+                                items: [{
+                                    html: '&nbsp;&nbsp;&nbsp;系统名称:<br>&nbsp;&nbsp;&nbsp;' +titleText+
+                                    '<br>&nbsp;&nbsp;&nbsp;版本号：V2.6.0.20160225 <br>'
+                                }]
+                            }).show();
+                        }
+                    }
+
                 ]
             });
 
@@ -413,6 +468,12 @@
                 border: false, 				//是否显示边框
                 collapsible: false, 		//是否可以收缩,默认不可以收缩，即不显示收缩箭头
                 height: 86,
+                html:'<div id="top" style="border:1px solid #564b47;background-color:#fff;height:55;width:100%;background-image: url(img/top.jpg);">' +
+                '<div id="text" style="position: absolute; top: 5px; left: 180px;">' +
+                '<p style="color: #ffffff;font-size:30px;text-align: center">'+titleText+'</p></div>' +
+                '<div style="height:55;border:0 solid #564b47;float:right;width:400px;margin:0px 0px 0px 0px;background-image: url(img/top_1.png);">' +
+                '</div>' +
+                '</div>',
                 bbar: northBar
             });
 
@@ -691,6 +752,189 @@
                 });
             }
             centerPanel.setActiveTab(id);
+        }
+
+
+        function bak() {
+            Ext.Msg.confirm("消息", "是否备份?", function (sid) {
+                if (sid == "yes") {
+                    Ext.Ajax.request({
+                        url: 'BakAction_bak.action',
+                        timeout: 20 * 60 * 1000,
+                        method: 'POST',
+                        success: function (response, options) {
+                            var o = Ext.util.JSON.decode(response.responseText);
+                            Ext.Msg.alert('消息', o.msg);
+                        },
+                        failure: function (response, options) {
+                            var o = Ext.util.JSON.decode(response.responseText);
+                            Ext.Msg.alert('消息', o.msg);
+                        }
+                    });
+                }
+            });
+        }
+
+        function uploadBak() {
+            var form = new Ext.form.FormPanel({
+                baseCls: 'x-plain',
+                labelWidth: 150,
+                labelAlign: 'right',
+                fileUpload: true,
+                defaultType: 'textfield',
+                defaults: {
+                    anchor: '95%',
+                    allowBlank: false,
+                    blankText: '该项不能为空！'
+                },
+                items: [
+                    {
+                        id: 'uploadFile',
+                        allowBlank: false,
+                        name: 'uploadFile',
+                        fieldLabel: '系统恢复包',
+                        xtype: 'textfield',
+                        inputType: 'file',
+                        editable: false
+                    },
+                ]
+            });
+
+            var win = new Ext.Window({
+                title: '上传系统恢复包',
+                width: 500,
+                height: 300,
+                layout: 'fit',
+                plain: true,
+                bodyStyle: 'padding:5px;',
+                buttonAlign: 'center',
+                items: form,
+                bbar: [
+                    '->', {
+                        text: '上传系统恢复包',
+                        id: 'uploadBak.submit',
+                        handler: function () {
+                            if (form.getForm().isValid()) {
+                                form.getForm().submit({
+                                    url: 'BakAction_uploadBak.action',
+                                    timeout: 20 * 60 * 1000,
+                                    method: "POST",
+                                    waitTitle: '系统提示',
+                                    waitMsg: '正在上传...',
+                                    success: function (form, action) {
+                                        Ext.MessageBox.alert("提示", action.result.msg);
+                                        store.reload();
+                                        win.close();
+                                    },
+                                    failure: function (form, action) {
+                                        var msg = action.result.msg;
+                                        Ext.MessageBox.show({
+                                            title: '信息',
+                                            width: 250,
+                                            msg: msg,
+                                            buttons: Ext.MessageBox.OK,
+                                            buttons: {'ok': '确定'},
+                                            icon: Ext.MessageBox.ERROR,
+                                            closable: false
+                                        });
+                                    }
+                                });
+                            }
+                        }
+                    }, {
+                        text: '关闭',
+                        handler: function () {
+                            win.close();
+                        }
+                    }]
+            });
+            win.show();
+        }
+
+
+        function restoreBak() {
+            Ext.Msg.confirm("消息", "是否还原系统到备份点?", function (sid) {
+                if (sid == "yes") {
+                    var restoreBakForm = new Ext.FormPanel({
+                        region: 'center',
+                        deferredRender: true,
+                        frame: true,
+                        border: false,
+                        labelAlign: 'right',
+                        defaults: {xtype: "textfield", inputType: "password"},
+                        items: [
+                            {
+                                xtype: 'textfield',
+                                fieldLabel: '输入系统密码',
+                                id: 'p_NewPassword',
+                                anchor: '95%',
+                                value: '123456',
+                                minLength: 6,
+                                minLengthText: '密码长度最少6位！',
+                                maxLength: 20,
+                                maxLengthText: '密码长度最多20位！',
+                                inputType: 'password',
+                                allowBlank: false
+                            }
+                        ]
+                    });
+                    var restoreBakWin = new Ext.Window({
+                        layout: 'border',
+                        width: 310,
+                        height: 160,
+                        plain: true,
+                        modal: true,
+                        title: '校验系统密码',
+                        resizable: false,
+                        items: restoreBakForm,
+                        buttons: [
+                            {
+                                text: '保存',
+                                listeners: {
+                                    'click': function () {
+                                        var passwd = Ext.getCmp("p_NewPassword").getValue();
+                                        restoreBakForm.getForm().submit({
+                                            clientValidation: true,
+                                            url: 'SystemAction_checkPasswd.action',
+                                            params: {password: hex_md5(passwd).toUpperCase()},
+                                            success: function (form, action) {
+                                                restoreBakWin.close();
+                                                Ext.Ajax.request({
+                                                    url: 'BakAction_bakRestore.action',
+                                                    timeout: 20 * 60 * 1000,
+                                                    method: 'POST',
+                                                    success: function (response, options) {
+                                                        var o = Ext.util.JSON.decode(response.responseText);
+                                                        Ext.Msg.alert('消息', o.msg);
+                                                    },
+                                                    failure: function (response, options) {
+                                                        var o = Ext.util.JSON.decode(response.responseText);
+                                                        Ext.Msg.alert('消息', o.msg);
+                                                    }
+                                                });
+                                            },
+                                            failure: function (form, action) {
+                                                Ext.Msg.alert('校验失败', '输入系统密码错误，请重新输入！');
+                                                restoreBakWin.close();
+                                            }
+                                        });
+                                    }
+                                }
+                            },
+                            {
+                                text: '退出',
+                                listeners: {
+                                    'click': function () {
+                                        restoreBakWin.close();
+                                    }
+                                }
+                            }
+                        ]
+
+                    });
+                    restoreBakWin.show();
+                }
+            });
         }
 
     </script>

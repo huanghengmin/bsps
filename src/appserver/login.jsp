@@ -34,39 +34,63 @@
 		}
 		return true;
 	}
+function setTitle(){
+        var pic = document.getElementById('pic');
+        var text_1 = '中盾B/S应用代理系统';
+        var text_2 = '';//字母符号数字
+        var text = text_1 + text_2; // 注意组合的前后顺序
+        var len = text_1.length * 40 + text_2.length * 20;//字母符号为中文的一半
+        var pLeft = (pic.clientWidth - len)/2;
+        if(pLeft < 300){
+            pLeft = 300;
+        }
+        var p = document.getElementById('text');
+        p.style.cssText='float:left;position: relative; top: 50px; left: '+pLeft+'px;';
+        p.innerHTML = '<p id="ptext" style="color: #27b1f1;font-size:40px;text-align: center">'+text+'</p>';
+    }
 </script>
 </head>
-<body style="background-color: #00172b">
+<body style="background-color: #2e394b;text-align: center" onload="setTitle()">
 
-<div
-	style="width: 466px; height: 266px; border: 0px solid #000000; margin: 0 auto; margin-top: 50px; background: url(img/login-ZD-BS.jpg) no-repeat;">
-<form name="loginForm" action="login.action" method="post"
-	style="margin: 0; padding: 0;border:0;" onsubmit="return checkForm();">
-<div style="padding: 100px 0 0 200px">
-<table cellspacing=3 cellpadding=0 border=0>
-	<tr>
-		<td align=right>用户名：</td>
-		<td><input type="text" name="name" autocomplete="off" style="width:140px;" /></td>
-	</tr>
-	<tr>
-		<td align=right>密&nbsp;&nbsp;码：</td>
-		<td><input type="password" name="pwd" autocomplete="off" style="width:140px;" /></td>
-	</tr>
-	<tr>
-		<td align=right>验证码：</td>
-		<td><INPUT TYPE="text" autocomplete="off" NAME="vcode" style="width: 80px;"><img
-			src="<c:url value="/RandomCodeCtrl"/>" height="20" width="60"
-			align="absmiddle" id="verifyCodeImg" onclick="reloadVerifyCode();"
-			alt="单击更换验证码" style="cursor: hand;" /></td>
-	</tr>
-	<tr>
-        <td/>
-		<td><input type="submit" value="登&nbsp;&nbsp;录" />&nbsp;&nbsp;<input
-			type="reset" value="取&nbsp;&nbsp;消" /></td>
-	</tr>
-</table>
-</div>
-</form>
+<div id="pic" style="position: relative;width: 800px; height: 450px; border: 1px solid #01162b;
+            margin-left:auto;margin-right:auto;margin-top: 5%;
+            background: url(img/login.jpg) no-repeat;"
+>
+	<div id="text" style="float:left;position: relative;">
+	</div>
+
+	<div  style="margin-left:auto;margin-right:auto;margin-top:220px;border: 0px solid #acd67a;
+                /*width: 400px;*/
+                /*padding: 100px 0 0 350px;*/">
+		<form name="loginForm" action="login.action" method="post" onsubmit="return checkForm();">
+			<table border=0px style="margin-left:350px;padding: 10px 10px 10px 10px;" id=myTable>
+				<tr>
+					<td align=right>&nbsp;用户名：</td>
+					<td colspan="1"><input type="text" name="name" autocomplete="off" style="width:140px;"/></td>
+				</tr>
+				<tr>
+					<td align=right>&nbsp;密&nbsp;&nbsp;码：</td>
+					<td colspan="1"><input type="password" name="pwd" autocomplete="off" style="width:140px;"/></td>
+				</tr>
+				<tr>
+					<td align=right>&nbsp;验证码：</td>
+					<td><INPUT TYPE="text" autocomplete="off" NAME="vcode" style="width: 80px;"><img
+							src="<c:url value="/RandomCodeCtrl"/>" height="23" width="60"
+							align="middle" id="verifyCodeImg" onclick="reloadVerifyCode();"
+							alt="单击更换验证码"/></td>
+				</tr>
+				<tr>
+					<td/>
+					<td colspan="1"><input type="submit" value="登&nbsp;&nbsp;录"/>&nbsp;&nbsp;<input
+							type="reset" value="取&nbsp;&nbsp;消"/></td>
+				</tr>
+				
+			</table>
+		</form>
+	</div>
+	<div id="text_bottom" style="float:left;position: relative; bottom: -50px; left: 500px;">
+		<p style="color: #27b1f1;font-size:15px;text-align: center">版权所有 北京中盾安全技术开发有限公司</p>
+	</div>
 </div>
 </body>
 </html>

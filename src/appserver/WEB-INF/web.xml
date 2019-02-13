@@ -104,6 +104,14 @@
 		<session-timeout>-1</session-timeout>
 	</session-config>
 
+	<servlet>
+		<servlet-name>CheckServlet</servlet-name>
+		<servlet-class>
+			com.hzih.bsps.web.servlet.CheckServlet
+		</servlet-class>
+		<load-on-startup>300</load-on-startup>
+	</servlet>
+
 
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener		</listener-class>

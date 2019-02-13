@@ -105,6 +105,9 @@
 
             <pathelement location="${sharelib.dir}/commons-exec.jar"/>
 
+            <pathelement location="${sharelib.dir}/apache/ant/ant.jar"/>
+            <pathelement location="${sharelib.dir}/apache/commons-compress-1.8.1-bin/commons-compress-1.8.1/commons-compress-1.8.1.jar"/>
+
             <!--<pathelement location="${sharelib.dir}/jakarta/struts/struts-el.jar"/>-->
             <pathelement location="${sharelib.dir}/jakarta/struts/struts.jar"/>
             <pathelement location="${sharelib.dir}/json/json-lib.jar"/>
@@ -218,6 +221,9 @@
             <lib file="${sharelib.dir}/sourceforge/syslog/syslog4j-0.9.46.jar"/>
 
             <lib file="${sharelib.dir}/commons-exec.jar"/>
+
+            <lib file="${sharelib.dir}/apache/ant/ant.jar"/>
+            <lib file="${sharelib.dir}/apache/commons-compress-1.8.1-bin/commons-compress-1.8.1/commons-compress-1.8.1.jar"/>
 
 
             <!--<lib file="${sharelib.dir}/jakarta/struts/struts-el.jar"/>-->

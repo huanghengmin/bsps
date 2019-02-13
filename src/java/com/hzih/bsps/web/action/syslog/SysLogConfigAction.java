@@ -64,14 +64,14 @@ public class SysLogConfigAction extends ActionSupport {
             msg = statusMsg.getMsg()+",服务器主机:" + sysLogServer.getHost()+",服务器端口:"+sysLogServer.getPort();
             json = "{success:true,msg:'" + msg + "'}";
             logger.info("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
-            SysLogSend.sysLog("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
+            //SysLogSend.sysLog("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
             logService.newLog("INFO", SessionUtils.getAccount(request).getUserName(), "日志服务器", msg);
             reloadSysLog();
         } else {
             msg = statusMsg.getMsg()+",服务器主机:" + sysLogServer.getHost()+",服务器端口:"+sysLogServer.getPort();
             json = "{success:false,msg:'" + msg + "'}";
             logger.info("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
-            SysLogSend.sysLog("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
+            //SysLogSend.sysLog("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
             logService.newLog("INFO", SessionUtils.getAccount(request).getUserName(), "日志服务器", msg);
         }
         actionBase.actionEnd(response, json, result);
@@ -111,14 +111,14 @@ public class SysLogConfigAction extends ActionSupport {
             msg = statusMsg.getMsg()+",服务器主机:" + host+",服务器端口:"+port;
             json = "{success:true,msg:'" + msg + "'}";
             logger.info("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
-            SysLogSend.sysLog("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
+            //SysLogSend.sysLog("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
             logService.newLog("INFO", SessionUtils.getAccount(request).getUserName(), "日志服务器", msg);
             reloadSysLog();
         }else {
             msg = statusMsg.getMsg()+",服务器主机:" + host+",服务器端口:"+port;
             json = "{success:false,msg:'" + msg + "'}";
             logger.info("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
-            SysLogSend.sysLog("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
+            //SysLogSend.sysLog("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
             logService.newLog("INFO", SessionUtils.getAccount(request).getUserName(), "日志服务器", msg);
         }
         actionBase.actionEnd(response, json, result);
@@ -144,7 +144,7 @@ public class SysLogConfigAction extends ActionSupport {
             msg = statusMsg.getMsg()+",服务器主机:" + host+",服务器端口:"+port;
             json = "{success:true,msg:'" + msg + "'}";
             logger.info("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
-            SysLogSend.sysLog("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
+            //SysLogSend.sysLog("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
             logService.newLog("INFO", SessionUtils.getAccount(request).getUserName(), "日志服务器", msg);
 
             reloadSysLog();
@@ -152,7 +152,7 @@ public class SysLogConfigAction extends ActionSupport {
             msg = statusMsg.getMsg()+",服务器主机:" + host+",服务器端口:"+port;
             json = "{success:false,msg:'" + msg + "'}";
             logger.info("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
-            SysLogSend.sysLog("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
+            //SysLogSend.sysLog("管理员" + SessionUtils.getAccount(request).getUserName() + ",操作时间:" + new Date() + ",操作信息:" + msg);
             logService.newLog("INFO", SessionUtils.getAccount(request).getUserName(), "日志服务器", msg);
         }
         actionBase.actionEnd(response, json, result);

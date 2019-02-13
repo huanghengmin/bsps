@@ -8,6 +8,13 @@ package com.hzih.bsps.utils;
  * To change this template use File | Settings | File Templates.
  */
 public class StringContext {
+    public final static String serviceName = "bs" ;
+    public static final String bak_file = "bsms_bak.tar.gz";
+    public static final String config_path = StringContext.systemPath +"/config";
+    public static final String license_path = StringContext.systemPath +"/license";
+    public static final String server_path = StringContext.systemPath +"/server";
+    public static final String mysql_bak_sql = StringContext.systemPath + "/mysqlbak.sql";
+    public static final String iptables_rules_files = "/etc/iptables.rules";
     public final static String systemPath = System.getProperty("bs.home");
     public final static String INTERFACE = "/etc/network/interfaces";//linux下IP信息存储文件
     public final static String IFSTATE = "/etc/network/run/ifstate"; //linux下DNS信息

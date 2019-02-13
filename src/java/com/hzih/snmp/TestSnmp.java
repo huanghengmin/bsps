@@ -163,7 +163,7 @@ public class TestSnmp {
 //                || bean.getCpu() > alert.getCpu() ){
 ////            Service.alert.process(AlarmService.AlertType_Equipment, getAlertDataBean());
 ////            Service.alert.process(AlarmService.AlertType_Security, getAlertDataBean());
-//            SysLogSend.sysLog(bean.toJsonString());
+//            //SysLogSend.sysLog(bean.toJsonString());
 //        }
 	}
 

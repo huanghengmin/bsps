@@ -60,11 +60,11 @@ public class HandlerNginxLogs {
 //                }
 //            }
             if(line!=null)
-            SysLogSend.sysLog(line);
+            //SysLogSend.sysLog(line);
             while (line != null){      // 判断读取到的字符串是否不为空
                 line = br.readLine();// 从文件中继续读取一行数据
-                if(line!=null)
-                SysLogSend.sysLog(line);
+                //if(line!=null)
+                //SysLogSend.sysLog(line);
             }
         }
         catch (IOException e){
